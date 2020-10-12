@@ -2,6 +2,8 @@
 <html lang="en">
 <img src="assignment03.png"/>
 <h1>Golf Scorecard</h1>
+ <style>/* center-align table columns */
+   th, td {text-align: center;} </style>
 <table class="table table-striped">
   <tr id="0">
     <th>Hole</th>
@@ -144,4 +146,281 @@
     <td id="NA"></td>
   </tr>
 </table>
+ <script>
+   let elem = [];
+// assign the entire table row for hole 1 to a variable, elem
+elem[1]
+  = document.getElementById("1");
+elem[2]
+  = document.getElementById("2");
+elem[3]
+  = document.getElementById("3");
+elem[4]
+  = document.getElementById("4");
+elem[5]
+  = document.getElementById("5");
+elem[6]
+  = document.getElementById("6");
+elem[7]
+  = document.getElementById("7");
+elem[8]
+  = document.getElementById("8");
+elem[9]
+  = document.getElementById("9");
+elem[10]
+  = document.getElementById("10");
+elem[11]
+  = document.getElementById("11");
+elem[12]
+  = document.getElementById("12");
+elem[13]
+  = document.getElementById("13");
+elem[14]
+  = document.getElementById("14");
+elem[15]
+  = document.getElementById("15");
+elem[16]
+  = document.getElementById("16");
+elem[17]
+  = document.getElementById("17");
+elem[18]
+  = document.getElementById("18");
+elem[19]
+  = document.getElementById("totals");
+
+// display the number of children (all td elements)
+// console.log(elem.children.length);
+// display the content of the + button, which is the first child of the fifth element
+// console.log(elem.children[4].children[0]); 
+
+// assign a function to the + button
+elem[1].children[4].children[0].onclick 
+  = function(){add1(elem[1]);};
+
+elem[2].children[4].children[0].onclick 
+  = function(){add1(elem[2]);};
+
+elem[3].children[4].children[0].onclick 
+  = function(){add1(elem[3]);};
+
+elem[4].children[4].children[0].onclick 
+  = function(){add1(elem[4]);};
+
+elem[5].children[4].children[0].onclick 
+  = function(){add1(elem[5]);};
+
+elem[6].children[4].children[0].onclick 
+  = function(){add1(elem[6]);};
+
+elem[7].children[4].children[0].onclick 
+  = function(){add1(elem[7]);};
+
+elem[8].children[4].children[0].onclick 
+  = function(){add1(elem[8]);};
+
+elem[9].children[4].children[0].onclick 
+  = function(){add1(elem[9]);};
+
+elem[10].children[4].children[0].onclick 
+  = function(){add1(elem[10]);};
+
+elem[11].children[4].children[0].onclick 
+  = function(){add1(elem[11]);};
+
+elem[12].children[4].children[0].onclick 
+  = function(){add1(elem[12]);};
+
+elem[13].children[4].children[0].onclick 
+  = function(){add1(elem[13]);};
+
+elem[14].children[4].children[0].onclick 
+  = function(){add1(elem[14]);};
+
+elem[15].children[4].children[0].onclick 
+  = function(){add1(elem[15]);};
+
+elem[16].children[4].children[0].onclick 
+  = function(){add1(elem[16]);};
+
+elem[17].children[4].children[0].onclick 
+  = function(){add1(elem[17]);};
+
+elem[18].children[4].children[0].onclick 
+  = function(){add1(elem[18]);};
+
+elem[1].children[4].children[1].onclick
+= function(){sub1(elem[1]);};
+
+elem[2].children[4].children[1].onclick
+= function(){sub1(elem[2]);};
+
+elem[3].children[4].children[1].onclick
+= function(){sub1(elem[3]);};
+
+elem[4].children[4].children[1].onclick
+= function(){sub1(elem[4]);};
+
+elem[5].children[4].children[1].onclick
+= function(){sub1(elem[5]);};
+
+elem[6].children[4].children[1].onclick
+= function(){sub1(elem[6]);};
+
+elem[7].children[4].children[1].onclick
+= function(){sub1(elem[7]);};
+
+elem[8].children[4].children[1].onclick
+= function(){sub1(elem[8]);};
+
+elem[9].children[4].children[1].onclick
+= function(){sub1(elem[9]);};
+
+elem[10].children[4].children[1].onclick
+= function(){sub1(elem[10]);};
+
+elem[11].children[4].children[1].onclick
+= function(){sub1(elem[11]);};
+
+elem[12].children[4].children[1].onclick
+= function(){sub1(elem[12]);};
+
+elem[13].children[4].children[1].onclick
+= function(){sub1(elem[13]);};
+
+elem[14].children[4].children[1].onclick
+= function(){sub1(elem[9]);};
+
+elem[14].children[4].children[1].onclick
+= function(){sub1(elem[14]);};
+
+elem[15].children[4].children[1].onclick
+= function(){sub1(elem[15]);};
+
+elem[16].children[4].children[1].onclick
+= function(){sub1(elem[16]);};
+
+elem[17].children[4].children[1].onclick
+= function(){sub1(elem[17]);};
+
+elem[18].children[4].children[1].onclick
+= function(){sub1(elem[18]);};
+
+elem[1].children[4].children[2].onclick
+= function(){clear(elem[1]);};
+
+elem[2].children[4].children[2].onclick
+= function(){clear(elem[2]);};
+
+elem[3].children[4].children[2].onclick
+= function(){clear(elem[3]);};
+
+elem[4].children[4].children[2].onclick
+= function(){clear(elem[4]);};
+
+elem[5].children[4].children[2].onclick
+= function(){clear(elem[5]);};
+
+elem[6].children[4].children[2].onclick
+= function(){clear(elem[6]);};
+
+elem[7].children[4].children[2].onclick
+= function(){clear(elem[7]);};
+
+elem[8].children[4].children[2].onclick
+= function(){clear(elem[8]);};
+
+elem[9].children[4].children[2].onclick
+= function(){clear(elem[9]);};
+
+elem[10].children[4].children[2].onclick
+= function(){clear(elem[10]);};
+
+elem[11].children[4].children[2].onclick
+= function(){clear(elem[11]);};
+
+elem[12].children[4].children[2].onclick
+= function(){clear(elem[12]);};
+
+elem[13].children[4].children[2].onclick
+= function(){clear(elem[13]);};
+
+elem[14].children[4].children[2].onclick
+= function(){clear(elem[14]);};
+
+elem[15].children[4].children[2].onclick
+= function(){clear(elem[15]);};
+
+elem[16].children[4].children[2].onclick
+= function(){clear(elem[16]);};
+
+elem[17].children[4].children[2].onclick
+= function(){clear(elem[17]);};
+
+elem[18].children[4].children[2].onclick
+= function(){clear(elem[18]);};
+
+//   = function(){sub1(elem[1]);};
+
+// create an "add1" function
+function add1 (elem) {
+  if(elem.children[2].innerHTML == "-") 
+    elem.children[2].innerHTML = "1";
+  else {
+    let currentScore = elem.children[2].innerHTML;
+    currentScore = Number.parseInt(currentScore);
+    elem.children[2].innerHTML = currentScore + 1;
+   }
+   diff(elem)
+ } 
+
+  // create a "sub1" function
+function sub1 (elem) {
+  if(elem.children[2].innerHTML == "-" || elem.children[2].innerHTML == 0) 
+    return;
+  else {
+    let currentScore = elem.children[2].innerHTML;
+    currentScore = Number.parseInt(currentScore);
+    elem.children[2].innerHTML = currentScore - 1;
+  }
+  diff(elem)
+}
+  
+function diff(elem) {
+  let currentDiff = elem.children[2].innerHTML - elem.children[1].innerHTML;
+  //currentScore = Number.parseInt(currentScore);
+  elem.children[3].innerHTML = currentDiff;
+  
+  total()
+}
+
+function total(){
+  let parTotal = 0;
+  let scoreTotal = 0;
+  let overTotal = 0;
+  for (let i = 1; i <= 18; i++) {
+    parTotal += parseInt(elem[i].children[1].innerHTML);
+    
+    if(!isNaN(elem[i].children[2].innerHTML)) {
+      scoreTotal += parseInt(elem[i].children[2].innerHTML);
+    }
+    
+    if(!isNaN(elem[i].children[3].innerHTML)) {
+      overTotal += parseInt(elem[i].children[3].innerHTML);
+    }
+  }
+  
+  //disp here
+  elem[19].children[1].innerHTML = parTotal;
+  elem[19].children[2].innerHTML = scoreTotal;
+  elem[19].children[3].innerHTML = overTotal;
+}
+
+function clear(elem){
+  elem.children[2].innerHTML = "-";
+  elem.children[3].innerHTML = "-";
+  total()
+}
+
+
+ </script>
 </html>
