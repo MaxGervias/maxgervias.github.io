@@ -128,6 +128,7 @@ function resetAllClubDistances() {
 // navigate to "About" screen
 function displayAbout() {
 	// your code here
+	alert("verison 1.0.0");
 	// window.location.href = "clubAbout.html";
 }
 
