@@ -95,7 +95,7 @@ function undoLastShot() {
 	if (localStorage.getItem("undoclubs")){
 		clubs.setItem("clubs",localStorage.getItem("undoclubs"));
 	}
-	window.location.href = "clubDistanceEntry.html";
+	window.location.href = "clubDistanceList.html";
 }
 
 // create a new (default) "clubs" array
