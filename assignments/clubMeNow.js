@@ -93,7 +93,7 @@ function displayClubDistanceEntryForm(c) {
 function undoLastShot() {
         // your code here !
 	if (localStorage.getItem("undoclubs")){
-		clubs.setItem("clubs",localStorage.getItem("undoclubs"));
+		localStorage.setItem("clubs",localStorage.getItem("undoclubs"));
 	}
 	window.location.href = "clubDistanceList.html";
 }
