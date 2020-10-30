@@ -178,8 +178,10 @@ function finalValidate() {
             if (document.getElementById(div).innerHTML == "OK!")    {
         count = count + 1;
    }else{
-     errMessage=0;
-     document.getElementById(div).innerHTML = errMessage;}
+     //errMessage=0;
+    // document.getElementById(div).innerHTML = errMessage;
+       
+   }
                 
         }
         if (count == 6)
@@ -190,10 +192,51 @@ function finalValidate() {
 
 // 10. Create a more object-oriented form
 
+
 // Step 1. Create/append the DOM object 
-let form00 = document.getElementById("form00");
-let table00 = createTable("table00");
-form00.appendChild(table00);
+var f = document.createElement("form");
+
+var i = document.createElement("input"); //input element, text
+i.setAttribute('type',"text");
+i.setAttribute('name',"first");
+
+var t = document.createElement("input"); //input element, text
+t.setAttribute('type',"text");
+t.setAttribute('name',"last");
+
+var m = document.createElement("input"); //input element, text
+m.setAttribute('type',"text");
+m.setAttribute('name',"email");
+
+var k = document.createElement("input"); //input element, text
+k.setAttribute('type',"text");
+k.setAttribute('name',"uid");
+
+var l = document.createElement("input"); //input element, text
+l.setAttribute('type',"text");
+l.setAttribute('name',"password");
+
+var n = document.createElement("input"); //input element, text
+n.setAttribute('type',"text");
+n.setAttribute('name',"confirm");
+
+var s = document.createElement("input"); //input element, Submit button
+s.setAttribute('type',"submit");
+s.setAttribute('value',"Validate");
+
+f.appendChild(i);
+f.appendChild(t);
+f.appendChild(m);
+f.appendChild(k);
+f.appendChild(l);
+f.appendChild(n);
+f.appendChild(s);
+
+
+//and some more input elements here
+//and dont forget to add a submit button
+
+document.getElementsByTagName('body')[0].appendChild(f);
 
 // Step 2. Create an JS object array containing form info 
 let formArray = [
@@ -214,9 +257,7 @@ let formArray = [
 // Step 3. loop through the JS object array to populate the form
 
 // your code here
-//let form01 = document.getElementById("form01");
-//let table01 = createTable("table02");
-//form01.appendChild(table01);
+
 
 // append to tableobj a 3-column table row 
 function appendTableRow3(tableobj, col1, col2, col3, col4){
@@ -261,17 +302,14 @@ function appendTableRow5 (tableobj, col1, col2, col3, col4, col5) {
   td3.setAttribute("style","border: 1px solid black;")
   td4.setAttribute("style","border: 1px solid black;")
   td5.setAttribute("style","border: 1px solid black;")
-  
   // insert content into columns
   td1.innerHTML = col1;
   td2.innerHTML = col2;
   td3.innerHTML = col3;
   td4.innerHTML = col4;
   td5.innerHTML = col5;
-  
   // create table row DOM object
   let tr = document.createElement("tr");
-  
   // append table divisions (columns) to table row
   tr.appendChild(td1);
   tr.appendChild(td2);
