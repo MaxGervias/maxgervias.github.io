@@ -134,31 +134,32 @@ let toMoney = (value) => {
   return `\$${toComma(value.toFixed(2))}`; 
 }
 
-// -------------------------------------------------------
+//hand done
 // When the form is clicked on the save button, it is saved to local storage
 let saveForm = () => {
   localStorage.setItem(`as06`, JSON.stringify(loans));
 }
 
-// -------------------------------------------------------
 // this when the load button is clicked it checks local storage to see if anything was stored in the first place. If not then it lets the user know that nothing is store.
 let loadForm = () => {
   if(localStorage.getItem(`as06`) != null){
      loans = JSON.parse(localStorage.getItem(`as06`));
      updateForm();
   } else {
-     alert(`Error: no saved values`);
+     alert(`Error: No Perivous Saves`);
   }
 }
+// Hand done Stops
+// I the rearrange the code similar to the source code to fix an error I was having
 
-// ----- JQUERY Functions -----
+// JQUERY Functions
 
-// -------------------------------------------------------
 // display the entry form
 function loadDoc() {
     
   // pre-fill defaults for first loan year
   // this loadDoc has been switch to jQuery do to the document commands being replace with $ signs.
+  // Copy code from here because I understand how to change it JQUERY However when changing it orginally the code will break and the css code would not work causing nothing to be highlighted at all when getting ride of loadDoc to a more orignal JQueary expression. 
   var defaultYear = loans[0].loan_year;
   $("#loan_year0" + 1).val(defaultYear++);
   var defaultLoanAmount = loans[0].loan_amount;
@@ -202,6 +203,7 @@ function loadDoc() {
   // $("#loan_year01").focus();
 
 } // end: function loadDoc()
+// end copy
 
 // -------------------------------------------------------
 function updateLoansArray() {
@@ -209,6 +211,8 @@ function updateLoansArray() {
   // regex tester web site: https://www.regexpal.com/
   
   //these are the variables that carry the regex expressions to limit what can be enter into each catagory.
+  
+  // Hand done but kept the same variable names to keep track if a problem did happen.
   
   // yearP limits only the first 2 numbers are 19 and 20 inorder for it to be a valited input.
   let yearP = /^(19|20)\d{2}$/;
@@ -248,6 +252,7 @@ function updateLoansArray() {
     for(i=0; i<5; i++){
       loans[i].loan_int_rate = rate;
     }
+// end the hand made.
     
     updateForm();
     
@@ -256,6 +261,7 @@ function updateLoansArray() {
 } // end: function updateLoansArray()
 
 // -------------------------------------------------------
+// copy here
 let updateForm = () => {
   loanWithInterest = 0;
   let totalAmt = 0;
@@ -274,6 +280,7 @@ let updateForm = () => {
   $(`#loan_int_accrued`).text(toMoney(int));
   
 } // end: function updateForm()
+// end Copy
   
 
 // ----- ANGULAR -----
@@ -281,6 +288,7 @@ let updateForm = () => {
 var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function($scope) {
+// this is helping to populate the Payments 
   $scope.payments = [];
   $scope.populate = function () {
     
@@ -292,6 +300,7 @@ app.controller('myCtrl', function($scope) {
     let n = 11;
     //loan payment formula
     //https://www.thebalance.com/loan-payment-calculations-315564
+    //original typed out the equation by hand but then code it from source code.
     let pay = 12 * (total / ((((1+r)**(n*12))-1)/(r *(1+r)**(n*12))));
     for (let i = 0; i < 10; i++) {
       total -= pay 
@@ -311,6 +320,7 @@ app.controller('myCtrl', function($scope) {
     }
   }
 });
+	  //end copy
 
 		</script>  
  </body>
