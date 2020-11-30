@@ -1,187 +1,113 @@
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" 
-          content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Assignment06</title>
-		<title>College Debt Estimator</title>
-		<!-- bootstrap 4 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-		<!-- custom css -->
-		<style>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+  <title>Assignment06</title> 
+  <title>College Debt Estimator</title> 
+  <!-- bootstrap 4 --> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" /> 
+  <!-- custom css --> 
+  <style>
         td, th, td input {text-align: right;}
         #loan_table {background-color: pink;}
-		</style>
-	</head>
-
-	<body onload="loadDoc();">
-
-		<div class="container">
-
-			<div ng-app="myApp" ng-controller="myCtrl">
-
-				<form>
-
-					<h1>College Debt Estimator</h1>
-
-					<br />
-
-					<div class="row">      
-						<div class="col-lg-6">
-							<div class="form-group">
-
-								<h2>Loans</h2>
-
-								<table class="table" id="loan_table">
-									<tr>
-										<th>Year</th>
-										<th>Amount</th>
-										<th>Int Rate<a target="_blank" href="https://studentaid.ed.gov/sa/types/loans/interest-rates"><sup>1</sup></a></th>
-										<th>YE Bal</th>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="2020" id="loan_year01" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="$10,000.00" id="loan_amt01" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="0.0453" id="loan_int01" />
-										</td>
-										<td>
-											<span id="loan_bal01">$10,453.00</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="2021" id="loan_year02" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="$10,000.00" id="loan_amt02" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="0.0453" id="loan_int02" />
-										</td>
-										<td>
-											<span id="loan_bal02">$21,379.52</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="2022" id="loan_year03" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="$10,000.00" id="loan_amt03" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="0.0453" id="loan_int03" />
-										</td>
-										<td>
-											<span id="loan_bal03">$32,801.01</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="2023" id="loan_year04" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="$10,000.00" id="loan_amt04" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="0.0453" id="loan_int04" />
-										</td>
-										<td>
-											<span id="loan_bal04">$44,739.90</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="2024" id="loan_year05" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="$10,000.00" id="loan_amt05" />
-										</td>
-										<td>
-											<input type="text" class="form-control" 
-                             placeholder="0.0453" id="loan_int05" />
-										</td>
-										<td>
-											<span id="loan_bal05">$57,219.62</span>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="3">Interest accrued while attending college:</td>
-										<td>
-											<span id="loan_int_accrued">$7,219.62</span>
-										</td>
-									</tr>
-								</table>
-								<br />
-								<button type="button" class="btn btn-primary" 
-                        ng-click="populate();">Re-calculate</button> 
-								<button type="button" class="btn btn-secondary" 
-                        onclick="saveForm();">Save</button>
-								<button type="button" class="btn btn-secondary" 
-                        onclick="loadForm();">Load</button>
-							</div>
-						</div>
-
-						<div class="col-lg-6">
-							<div class="form-group">
-								<h2>Payments</h2>
-								<table class="table">
-									<tr>
-										<th>Year</th>
-										<th>Payments</th>
-										<th>Int Amt</th>
-										<th>YE Bal</th>
-									</tr>
-									<tr ng-repeat="x in payments">
-										<td>{{ x.year }}</td>
-										<td>{{ x.payment }}</td>
-										<td>{{ x.amt }}</td>
-										<td>{{ x.ye }}</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</form>
-
-		</div>
-
-		<!--- jquery 3.4.1 -->
-    <!--- this is the javascript in the html that has imported jQuery to make the jQuery part work this program -->
-		<script
-src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-crossorigin="anonymous">
-		</script>
-		<!--- angular 1.6.9 -->
-    <!--- this is the javascript in the html that has imported angular experetion to make the angular experetion part work this program -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    
-    <script>
+		</style> 
+ </head> 
+ <body onload="loadDoc();"> 
+  <div class="container"> 
+   <div ng-app="myApp" ng-controller="myCtrl"> 
+    <form> 
+     <h1>College Debt Estimator</h1> 
+     <br /> 
+     <div class="row"> 
+      <div class="col-lg-6"> 
+       <div class="form-group"> 
+        <h2>Loans</h2> 
+        <table class="table" id="loan_table"> 
+         <tbody>
+          <tr> 
+           <th>Year</th> 
+           <th>Amount</th> 
+           <th>Int Rate<a target="_blank" href="https://studentaid.ed.gov/sa/types/loans/interest-rates"><sup>1</sup></a></th> 
+           <th>YE Bal</th> 
+          </tr> 
+          <tr> 
+           <td> <input type="text" class="form-control" placeholder="2020" id="loan_year01" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="$10,000.00" id="loan_amt01" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="0.0453" id="loan_int01" /> </td> 
+           <td> <span id="loan_bal01">$10,453.00</span> </td> 
+          </tr> 
+          <tr> 
+           <td> <input type="text" class="form-control" placeholder="2021" id="loan_year02" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="$10,000.00" id="loan_amt02" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="0.0453" id="loan_int02" /> </td> 
+           <td> <span id="loan_bal02">$21,379.52</span> </td> 
+          </tr> 
+          <tr> 
+           <td> <input type="text" class="form-control" placeholder="2022" id="loan_year03" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="$10,000.00" id="loan_amt03" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="0.0453" id="loan_int03" /> </td> 
+           <td> <span id="loan_bal03">$32,801.01</span> </td> 
+          </tr> 
+          <tr> 
+           <td> <input type="text" class="form-control" placeholder="2023" id="loan_year04" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="$10,000.00" id="loan_amt04" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="0.0453" id="loan_int04" /> </td> 
+           <td> <span id="loan_bal04">$44,739.90</span> </td> 
+          </tr> 
+          <tr> 
+           <td> <input type="text" class="form-control" placeholder="2024" id="loan_year05" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="$10,000.00" id="loan_amt05" /> </td> 
+           <td> <input type="text" class="form-control" placeholder="0.0453" id="loan_int05" /> </td> 
+           <td> <span id="loan_bal05">$57,219.62</span> </td> 
+          </tr> 
+          <tr> 
+           <td colspan="3">Interest accrued while attending college:</td> 
+           <td> <span id="loan_int_accrued">$7,219.62</span> </td> 
+          </tr> 
+         </tbody>
+        </table> 
+        <br /> 
+        <button type="button" class="btn btn-primary" ng-click="populate();">Re-calculate</button> 
+        <button type="button" class="btn btn-secondary" onclick="saveForm();">Save</button> 
+        <button type="button" class="btn btn-secondary" onclick="loadForm();">Load</button> 
+       </div> 
+      </div> 
+      <div class="col-lg-6"> 
+       <div class="form-group"> 
+        <h2>Payments</h2> 
+        <table class="table"> 
+         <tbody>
+          <tr> 
+           <th>Year</th> 
+           <th>Payments</th> 
+           <th>Int Amt</th> 
+           <th>YE Bal</th> 
+          </tr> 
+          <tr ng-repeat="x in payments"> 
+           <td>{{ x.year }}</td> 
+           <td>{{ x.payment }}</td> 
+           <td>{{ x.amt }}</td> 
+           <td>{{ x.ye }}</td> 
+          </tr> 
+         </tbody>
+        </table> 
+       </div> 
+      </div> 
+     </div> 
+    </form>
+   </div>  
+  </div> 
+  <!-- jquery 3.4.1 --> 
+  <!-- this is the javascript in the html that has imported jQuery to make the jQuery part work this program --> 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+		</script> 
+  <!-- angular 1.6.9 --> 
+  <!-- this is the javascript in the html that has imported angular experetion to make the angular experetion part work this program --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+  <script>
     // --- global variables ---
 let loans = [
     { loan_year: 2020, loan_amount: 10000.00, loan_int_rate: 0.0453 },
@@ -386,6 +312,6 @@ app.controller('myCtrl', function($scope) {
   }
 });
 
-		</script>
-	</body>
+		</script>  
+ </body>
 </html>
